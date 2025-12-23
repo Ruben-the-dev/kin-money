@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kin Money - Mon Espace Sécurisé</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', sans-serif; background: #0d1117; color: white; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            min-height: 100vh; margin: 0; padding: 10px;
+        }
+        .container { 
+            background: #161b22; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+            text-align: center; width: 100%; max-width: 400px; border: 1px solid #30363d; box-sizing: border-box;
+        }
+        h1 { color: #58a6ff; margin-bottom: 20px; }
+        input { width: 90%; padding: 12px; margin: 10px 0; border-radius: 5px; border: 1px solid #30363d; background: #0d1117; color: white; outline: none; }
+        button { width: 100%; padding: 12px; background: #238636; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; margin-top: 10px; transition: 0.3s; }
+        button:hover { background: #2ea043; }
+        .hidden { display: none; }
+        .balance-card { background: #21262d; padding: 25px; border-radius: 10px; margin: 20px 0; border: 1px solid #58a6ff; }
+        .balance-amount { font-size: 2.2em; color: #58a6ff; font-weight: bold; margin-top: 10px; }
+        .btn-action { background: #30363d; margin-bottom: 8px; border: 1px solid #484f58; color: white; }
+        .btn-transfer { background: #0969da; color: white; }
+        .btn-logout { background: #da3633; margin-top: 20px; color: white; }
+        .link { color: #58a6ff; cursor: pointer; display: block; margin-top: 15px; text-decoration: none; }
+        footer { text-align: center; width: 100%; margin-top: 20px; }
+        @media (max-width: 480px) { h1 { font-size: 1.5em; } .balance-amount { font-size: 1.8em; } }
+    </style>
+</head>
+<body>
+
+<div class="container" id="auth-box">
+    <h1>Kin Money 🇨🇩</h1>
+    <div id="login-form">
+        <input type="number" id="loginId" placeholder="Votre ID de compte">
+        <input type="password" id="loginPass" placeholder="Votre mot de passe">
+        <button onclick="login()">Se connecter</button>
+        <span class="link" onclick="createAccount()">Créer un nouveau compte</span>
+    </div>
+</div>
+
+<div class="container hidden" id="dashboard">
+    <h2 id="welcomeName">Bienvenue</h2>
+    <p style="color: #8b949e;">ID Compte : <b id="displayId" style="color: white;"></b></p>
+    <div class="balance-card">
+        <div style="text-transform: uppercase; font-size: 0.8em; letter-spacing: 1px;">Solde Kin Money</div>
+        <div class="balance-amount"><span id="balanceValue">0.00</span> USD</div>
+    </div>
+    <button class="btn-action" onclick="handleTransaction('deposit')">➕ Faire un Dépôt</button>
+    <button class="btn-action" onclick="handleTransaction('withdraw')">➖ Faire un Retrait</button>
+    <button class="btn-transfer" onclick="handleTransfer()">💸 Envoyer de l'argent</button>
+    <button class="btn-logout" onclick="location.reload()">Se déconnecter</button>
+</div>
+
+<footer>
+    <hr style="border: 0; border-top: 1px solid #30363d; margin: 10px auto; width: 80%; max-width: 300px;">
+    <p style="font-weight: bold; color: #58a6ff;">Ruben-the-Dev Money : Votre futur, notre code 🚀</p>
+    <p style="font-size: 0.75em; opacity: 0.6; color: #8b949e;">© 2025 Ruben-the-Dev Finance - Kinshasa Tech Hub</p>
+</footer>
+
+<script>
+    let currentAccountId = null;
+
+    async function createAccount() {
+        const name = prompt("Entrez votre nom complet :");
+        const password = prompt("Choisissez un mot de passe :");
+        if (!name || !password) return;
+        try {
+            const response = await fetch(`/create_account?name=${encodeURIComponent(name)}&password=${encodeURIComponent(password)}`, { method: 'POST' });
+            const data = await response.json();
+            if (data.id) {
+                alert(`✨ Compte Kin Money créé !\n\n👤 Nom : ${data.name}\n🔑 VOTRE ID UNIQUE : ${data.id}\n\nNotez cet ID pour vous connecter.`);
+            }
+        } catch (e) { alert("❌ Erreur lors de la création."); }
+    }
+
+    async function login() {
+        const id = document.getElementById('loginId').value;
+        const pass = document.getElementById('loginPass').value;
+        if (!id || !pass) return alert("Remplissez tous les champs.");
+        const res = await fetch(`/login?account_id=${id}&password=${pass}`, { method: 'POST' });
+        const data = await res.json();
+        if (res.ok) {
+            currentAccountId = id;
+            document.getElementById('auth-box').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('hidden');
+            document.getElementById('welcomeName').innerText = `Bonjour, ${data.name} !`;
+            document.getElementById('displayId').innerText = data.id;
+            document.getElementById('balanceValue').innerText = data.balance.toFixed(2);
+        } else { alert("❌ Identifiants incorrects !"); }
+    }
+
+    async function handleTransaction(type) {
+        const action = type === 'deposit' ? 'dépôt' : 'retrait';
+        const amount = prompt(`Entrez le montant du ${action} (USD) :`);
+        if (!amount || isNaN(amount) || amount <= 0) return;
+        const endpoint = type === 'deposit' ? '/deposit' : '/withdraw';
+        const res = await fetch(`${endpoint}?account_id=${currentAccountId}&amount=${amount}`, { method: 'POST' });
+        const data = await res.json();
+        if (res.ok) {
+            document.getElementById('balanceValue').innerText = data.new_balance.toFixed(2);
+            alert(`✅ ${type === 'deposit' ? 'Dépôt' : 'Retrait'} de ${amount} USD réussi !`);
+        } else { alert("❌ Erreur : " + (data.detail || "Action impossible")); }
+    }
+
+    async function handleTransfer() {
+        const toId = prompt("ID de la personne qui doit recevoir l'argent :");
+        const amount = prompt("Montant à envoyer (USD) :");
+        if (!toId || !amount || isNaN(amount)) return;
+        const res = await fetch(`/transfer?sender_id=${currentAccountId}&receiver_id=${toId}&amount=${amount}`, { method: 'POST' });
+        const data = await res.json();
+        if (res.ok) {
+            document.getElementById('balanceValue').innerText = data.new_balance.toFixed(2);
+            alert(`✅ Transfert envoyé avec succès au compte #${toId} !`);
+        } else { alert("❌ Erreur : " + (data.detail || "Vérifiez l'ID ou votre solde.")); }
+    }
+</script>
+</body>
+</html>
