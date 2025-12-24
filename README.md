@@ -24,7 +24,7 @@ Pour permettre aux recruteurs et aux développeurs de tester l'intégralité des
 
 - **Lien de l'API (Swagger UI)** : [https://kin-money.onrender.com/docs](https://kin-money.onrender.com/docs)
 - **Identifiant Admin** : `admin`
-- **Mot de passe** : `TON_MOT_DE_PASSE`
+- **Mot de passe** : `Hacker`
 
 > [!NOTE]
 > **Avertissement de Sécurité** : Le mot de passe a été laissé en clair dans le code et cette documentation à titre **strictement démonstratif**. 
