@@ -46,3 +46,14 @@ Pour permettre aux recruteurs et aux développeurs de tester l'intégralité des
    ```bash
    git clone [https://github.com/Ruben-the-dev/kin-money.git](https://github.com/Ruben-the-dev/kin-money.git)
    cd kin-money
+   Installer les dépendances : (Nécessite Python installé)
+
+2
+
+pip install -r requirements.txt
+Lancer le serveur :
+
+3
+
+uvicorn main:app --reload
+Accédez ensuite à http://127.0.0.1:8000/docs dans votre navigateur.
