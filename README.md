@@ -42,18 +42,20 @@ Pour permettre aux recruteurs et aux développeurs de tester l'intégralité des
 
 ## ⚙️ Installation Locale
 
-1. **Cloner le projet** :
+    1️⃣ **Cloner le projet** :
    ```bash
    git clone [https://github.com/Ruben-the-dev/kin-money.git](https://github.com/Ruben-the-dev/kin-money.git)
    cd kin-money
    Installer les dépendances : (Nécessite Python installé)
+   ```bash
+    2️⃣ Installation des dépendances (Crucial)
+    Cette étape installe tous les outils nécessaires (FastAPI, SQLAlchemy, Uvicorn, etc.) : pip install -r requirements.txt
+   ```bash
+    3️⃣ Lancement du serveur: uvicorn main:app --reload
 
-2
+    
+    🚀 Accès à l'interface
+    Une fois le serveur lancé, ouvrez votre navigateur à l'adresse suivante : 👉 http://127.0.0.1:8000/docs
 
-pip install -r requirements.txt
-Lancer le serveur :
-
-3
-
-uvicorn main:app --reload
-Accédez ensuite à http://127.0.0.1:8000/docs dans votre navigateur.
+  
+  
