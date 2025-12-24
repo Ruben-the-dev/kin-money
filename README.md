@@ -42,7 +42,7 @@ Pour permettre aux recruteurs et aux développeurs de tester l'intégralité des
 
 ## ⚙️ Installation Locale
 
-    1️⃣ **Cloner le projet** :
+    1️⃣ Cloner le projet:
    ```bash
    git clone [https://github.com/Ruben-the-dev/kin-money.git](https://github.com/Ruben-the-dev/kin-money.git)
    cd kin-money
