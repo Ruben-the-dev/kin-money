@@ -1,6 +1,6 @@
 # 💰 Kin-Money 🇨🇩 — Application Simulation Bancaire
 
-**Kin-Money** est une application bancaire **Full-Stack** conçue pour offrir une expérience de gestion financière fluide, sécurisée et intuitive. Elle combine la puissance de **FastAPI** en backend et une interface **Responsive Design** moderne.
+**Kin-Money** est une application de simulation bancaire **Full-Stack** conçue pour reproduire les opérations financières essentielles de manière fluide et sécurisée. Elle utilise la puissance de **FastAPI** en backend pour gérer les transactions et une interface **Responsive Design** moderne pour l'expérience utilisateur.
 
 ---
 
