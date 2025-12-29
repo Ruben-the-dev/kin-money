@@ -71,11 +71,11 @@ uvicorn main:app --reload
 💬 Parlons de votre projet !
 Je suis développeur Freelance spécialisé dans la création de solutions Backend robustes et d'architectures Cloud.
 
-💼 LinkedIn : Ruben Mwanza Kankese
+**💼 LinkedIn** : [Ruben Mwanza Kankese](https://www.linkedin.com/in/ruben-mwanza-kankese)
 
 📧 Email Direct : rubenthedevs@gmail.com
 
-🌍 Portfolio Complet : Découvrir mes projets
+**🌍 Portfolio Complet** : [Découvrir mes projets](https://ruben-the-dev.github.io/Portfolio/)
 
 <p align="center">
 <img src="https://komarev.com/ghpvc/?username=Ruben-the-dev&color=blue&style=flat-square&label=VUES+PROFIL" alt="Profile Views" /> </p>
