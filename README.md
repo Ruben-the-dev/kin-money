@@ -56,15 +56,18 @@ Testez l'application en direct sans aucune installation technique :
 
 ## ⚙️ Installation Locale
 
-```bash
-# 1. Cloner le dépôt
+bash
+### 1. Cloner le dépôt
 git clone [https://github.com/Ruben-the-dev/kin-money.git](https://github.com/Ruben-the-dev/kin-money.git)
 
-# 2. Installer les dépendances
+### 2. Installer les dépendances
 pip install -r requirements.txt
 
-# 3. Lancer le moteur
+### 3. Lancer le moteur
 uvicorn main:app --reload
+
+---
+
 💬 Parlons de votre projet !
 Je suis développeur Freelance spécialisé dans la création de solutions Backend robustes et d'architectures Cloud.
 
