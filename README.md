@@ -96,6 +96,5 @@ Je réalise ce type de solutions en Freelance. Si vous avez un projet en tête, 
 
 📧 Email : rubenthedevs@gmail.com
 
-🌍 Portfolio : Explorer mes réalisations
 
 <p align="center"> <img src="https://komarev.com/ghpvc/?username=Ruben-the-dev&color=blue&style=flat-square&label=VUES+PROFIL" alt="Profile Views" /> </p>
