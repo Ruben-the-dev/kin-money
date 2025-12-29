@@ -67,19 +67,19 @@ Voici les outils et technologies qui propulsent ce projet :
 ## ⚙️ Installation Locale
 
 1️⃣ **Cloner le projet**
-
 bash
 git clone [https://github.com/Ruben-the-dev/kin-money.git](https://github.com/Ruben-the-dev/kin-money.git)
 cd kin-money
+
+
 2️⃣ Préparer l'environnement
 
 Bash
-
 pip install -r requirements.txt
+
+
 3️⃣ Lancer le serveur
-
 Bash
-
 uvicorn main:app --reload
 👉 http://127.0.0.1:8000
 
