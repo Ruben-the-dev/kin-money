@@ -8,8 +8,18 @@ from datetime import datetime
 import os
 
 # Configuration Base de données
-DB_URL = "sqlite:///./nexus_pay.db"
-engine = create_engine(DB_URL, connect_args={"check_same_thread": False})
+DB_URL = os.getenv("DATABASE_URL")
+
+if not DB_URL:
+    # Mode Local (si tu le lances sur ton PC)
+    DB_URL = "sqlite:///./nexus_pay.db"
+    engine = create_engine(DB_URL, connect_args={"check_same_thread": False})
+else:
+    # Mode Production (Render + Neon)
+    if DB_URL.startswith("postgres://"):
+        DB_URL = DB_URL.replace("postgres://", "postgresql://", 1)
+    engine = create_engine(DB_URL)
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
@@ -127,4 +137,5 @@ async def admin_history(password: str = Query(...)):
     return history
 
 # Montage des fichiers statiques
+
 app.mount("/static", StaticFiles(directory="static"), name="static")
