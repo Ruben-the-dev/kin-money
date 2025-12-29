@@ -11,11 +11,9 @@ import os
 DB_URL = os.getenv("DATABASE_URL")
 
 if not DB_URL:
-    # Mode Local 
     DB_URL = "sqlite:///./nexus_pay.db"
     engine = create_engine(DB_URL, connect_args={"check_same_thread": False})
 else:
-    # Mode Production (Render + Neon)
     if DB_URL.startswith("postgres://"):
         DB_URL = DB_URL.replace("postgres://", "postgresql://", 1)
     engine = create_engine(DB_URL)
@@ -139,4 +137,5 @@ async def admin_history(password: str = Query(...)):
 # Montage des fichiers statiques
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
+
 
