@@ -78,6 +78,4 @@ Je suis développeur Freelance spécialisé dans la création de solutions Backe
 🌍 Portfolio Complet : Découvrir mes projets
 
 <p align="center">
-
-
 <img src="https://komarev.com/ghpvc/?username=Ruben-the-dev&color=blue&style=flat-square&label=VUES+PROFIL" alt="Profile Views" /> </p>
