@@ -8,7 +8,8 @@
 
 Vous pouvez tester l'expérience complète en direct sans aucune installation :
 
-👉 **[Lancer la démo Kin-Money](https://kin-money.onrender.com)**
+👉 **[Lancer la démo Kin-Money Client](https://kin-money.onrender.com)**
+👉 **[Lancer la démo Kin-Money Admin](https://kin-money.onrender.com/admin)**
 
 *Pour ceux qui veulent explorer les entrailles de l'API, la documentation interactive est disponible ici : [Swagger UI (/docs)](https://kin-money.onrender.com/docs)*
 
